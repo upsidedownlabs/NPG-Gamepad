@@ -8,7 +8,7 @@ This app connects to the Neuro Playground (NPG) Lite over Bluetooth to read your
 
 - **Wireless:** Connects wirelessly to the NPG Lite device via Bluetooth Low Energy (BLE).
 - **Up to 6 Bio-potential Signals:** Supports up to 6 channels processing muscles (EMG), brainwaves and blinks (EEG), eye movements (EOG), and heartbeats (ECG).
-- **Custom Mapping:** A simple UI that lets you choose which action (like a "Double Jaw Clench") triggers which button (like the "A" button or "Right Trigger").
+- **Custom Mapping:** A simple UI that lets you choose which action (like a "Double Jaw Clench") triggers which button (like the "A" button or "DPAD" keys).
 - **Zero Config:** The app automatically handles and installs the required virtual Xbox controller driver (`ViGEmBus`) on Windows for you.
 - **Built-in Tester:** See your body signals light up in real-time and test your virtual controller before jumping into a game.
 
@@ -21,7 +21,7 @@ This app connects to the Neuro Playground (NPG) Lite over Bluetooth to read your
 - A Windows PC with Bluetooth
 - NPG Lite ([Explorer, Ninja or Beast pack](https://docs.upsidedownlabs.tech/hardware/bioamp/neuro-play-ground-lite/index.html))
 - BioAmp snap cables and gel electrodes (2 per signal, plus 1 shared reference)
-- NuPrep skin preparation gel (optional) amd alcohol swabs
+- NuPrep skin preparation gel (optional) and alcohol swabs
 - USB Type-C cable
 
 ## Setup
@@ -76,7 +76,7 @@ Connect the red and black cables of each signal to the **+** and **-** pins of o
 | Channel 5 | A4P | A4N |
 | Channel 6 | A5P | A5N |
 
-> **Note:** Only the NPG Lite Beast pack comes with 6 channels. The Explorer and Ninja packs supports only 3 channels.
+> **Note:** Only the NPG Lite Beast pack comes with 6 channels. The Explorer and Ninja packs support only 3 channels.
 
 Remember which channel you used for each signal, because you will select it in the app. For example: EMG on Channel 1, EEG on Channel 2 and EOG on Channel 3.
 
