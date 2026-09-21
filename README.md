@@ -76,7 +76,7 @@ Connect the red and black cables of each signal to the **+** and **-** pins of o
 | Channel 5 | A4P | A4N |
 | Channel 6 | A5P | A5N |
 
-> **Note:** Only the NPG Lite Beast pack has 6 channels. The Explorer and Ninja packs have 3 channels.
+> **Note:** Only the NPG Lite Beast pack comes with 6 channels. The Explorer and Ninja packs supports only 3 channels.
 
 Remember which channel you used for each signal, because you will select it in the app. For example: EMG on Channel 1, EEG on Channel 2 and EOG on Channel 3.
 
