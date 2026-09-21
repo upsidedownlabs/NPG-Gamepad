@@ -25,7 +25,6 @@ a = Analysis(
     datas=[
         ('NPG-Controller.ui', '.'),
         ('Controller-Keybinds.ui', '.'),
-        ('NPG SNES with Logo.svg', '.'),
         ('icons', 'icons'),
         (vigem_installer, '.'),
     ],

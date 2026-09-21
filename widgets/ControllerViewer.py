@@ -57,7 +57,7 @@ class ControllerViewer(QWidget):
         self.setMinimumSize(540, 250)
 
         from gamepad import resource_path
-        svg_path = resource_path("NPG SNES with Logo.svg")
+        svg_path = resource_path("icons/NPG SNES with Logo.svg")
         self._renderer = QSvgRenderer(svg_path)
         self.button_states: dict[str, float] = {k: 0.0 for k in self._ALL_KEYS}
 
