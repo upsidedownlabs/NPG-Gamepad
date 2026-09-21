@@ -18,15 +18,13 @@ VIGEM_FILENAME = 'ViGEmBus_1.22.0_x64_x86_arm64.exe'
 VIGEM_URL = f'https://github.com/nefarius/ViGEmBus/releases/download/v1.22.0/{VIGEM_FILENAME}'
 
 project_root = Path(SPECPATH)
-vigem_installers = sorted(project_root.glob('ViGEmBus_*.exe'))
-if not vigem_installers:
+vigem_installer = project_root / VIGEM_FILENAME
+if not vigem_installer.exists():
     import urllib.request
     print(f'Downloading {VIGEM_FILENAME} ...')
     part_file = project_root / (VIGEM_FILENAME + '.part')
     urllib.request.urlretrieve(VIGEM_URL, part_file)
-    part_file.replace(project_root / VIGEM_FILENAME)
-    vigem_installers = [project_root / VIGEM_FILENAME]
-vigem_installer = str(vigem_installers[-1])
+    part_file.replace(vigem_installer)
 
 a = Analysis(
     ['main.py'],
@@ -35,7 +33,7 @@ a = Analysis(
         ('NPG-Controller.ui', '.'),
         ('Controller-Keybinds.ui', '.'),
         ('icons', 'icons'),
-        (vigem_installer, '.'),
+        (str(vigem_installer), '.'),
     ],
     hiddenimports=['vgamepad', 'bleak', 'PySide6.QtSvg'],
 )
