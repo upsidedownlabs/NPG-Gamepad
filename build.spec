@@ -1,8 +1,8 @@
 import os
 from pathlib import Path
-import vgamepad
+from importlib.util import find_spec
 
-vgamepad_pkg_path = Path(vgamepad.__file__).parent
+vgamepad_pkg_path = Path(find_spec('vgamepad').submodule_search_locations[0])
 vgamepad_path = vgamepad_pkg_path / 'win' / 'vigem' / 'client'
 
 if not vgamepad_path.exists():
@@ -14,9 +14,18 @@ for dll in vgamepad_path.rglob('*.dll'):
     dest = str(dll.parent.relative_to(site_packages_path))
     vgamepad_dlls.append((str(dll), dest))
 
-vigem_installers = sorted(Path('.').glob('ViGEmBus_*.exe'))
+VIGEM_FILENAME = 'ViGEmBus_1.22.0_x64_x86_arm64.exe'
+VIGEM_URL = f'https://github.com/nefarius/ViGEmBus/releases/download/v1.22.0/{VIGEM_FILENAME}'
+
+project_root = Path(SPECPATH)
+vigem_installers = sorted(project_root.glob('ViGEmBus_*.exe'))
 if not vigem_installers:
-    raise FileNotFoundError("No ViGEmBus_*.exe found in project root")
+    import urllib.request
+    print(f'Downloading {VIGEM_FILENAME} ...')
+    part_file = project_root / (VIGEM_FILENAME + '.part')
+    urllib.request.urlretrieve(VIGEM_URL, part_file)
+    part_file.replace(project_root / VIGEM_FILENAME)
+    vigem_installers = [project_root / VIGEM_FILENAME]
 vigem_installer = str(vigem_installers[-1])
 
 a = Analysis(

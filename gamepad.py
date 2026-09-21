@@ -11,13 +11,32 @@ def resource_path(relative_path):
     return os.path.join(os.path.dirname(os.path.abspath(__file__)), relative_path)
 
 
+VIGEMBUS_FILENAME = 'ViGEmBus_1.22.0_x64_x86_arm64.exe'
+VIGEMBUS_URL = f'https://github.com/nefarius/ViGEmBus/releases/download/v1.22.0/{VIGEMBUS_FILENAME}'
+
+
+def _download_vigembus_installer(dest):
+    import urllib.request
+    print('Downloading ViGEmBus installer...')
+    part_file = dest + '.part'
+    try:
+        urllib.request.urlretrieve(VIGEMBUS_URL, part_file)
+        os.replace(part_file, dest)
+    except Exception as e:
+        print(f'ViGEmBus installer download failed: {e}')
+        if os.path.exists(part_file):
+            os.remove(part_file)
+
+
 def ensure_vigembus():
     """Install ViGEmBus driver if not already installed and running."""
     import subprocess
     result = subprocess.run(['sc', 'query', 'ViGEmBus'], capture_output=True, text=True)
     if result.returncode == 0 and 'RUNNING' in result.stdout:
         return True
-    installer = resource_path('ViGEmBus_1.22.0_x64_x86_arm64.exe')
+    installer = resource_path(VIGEMBUS_FILENAME)
+    if not os.path.exists(installer) and not hasattr(sys, '_MEIPASS'):
+        _download_vigembus_installer(installer)
     if not os.path.exists(installer):
         print('ViGEmBus installer not found')
         return False

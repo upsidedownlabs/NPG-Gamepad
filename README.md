@@ -145,28 +145,28 @@ Once everything works, open your game. It sees your body as a real Xbox controll
 
 ## Running from source (For developers)
 
-If you want to view or edit the code directly:
+If you want to view or edit the code directly, you need a Windows PC with Python 3.11.
 
 1. Clone this repository to your PC.
-2. Make sure you have Python installed.
-3. Open a terminal in the project folder and create a virtual environment:
+2. Open a terminal in the project folder, then create and activate a virtual environment:
    ```bash
    python -m venv .venv
+   .venv\Scripts\activate
    ```
-4. Activate the virtual environment:
-   - **Windows:** `.venv\Scripts\activate`
-   - **Mac/Linux:** `source .venv/bin/activate`
-5. Install the required libraries:
+3. Install the required libraries:
    ```bash
    pip install -r requirements.txt
    ```
-6. Run the main script:
+4. Run the main script:
    ```bash
    python main.py
    ```
 
+The first time you run it on a PC that does not have the `ViGEmBus` driver, the app downloads the installer and Windows asks for admin permission to install it.
+
 ### Building the .exe yourself
-If you want to package your own version of the `.exe`:
+After step 3 above, run:
 ```bash
 pyinstaller build.spec
 ```
+The `.exe` is created in the `dist` folder as `NPG Lite SNES.exe`. The first build downloads the `ViGEmBus` installer (about 6 MB) and bundles it into the `.exe`.
